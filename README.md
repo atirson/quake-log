@@ -32,6 +32,5 @@ Este programa lê um arquivo .log e organiza os dados do mesmo em formato de JSO
 - cd quake-log && cd server
 - yarn install
 - yarn dev
-- Instale o Insomnia e crie um workspace e faça o import do arquivo insomia.json é só clicar no nome do worspace e vai listar
-- esta opção
+- Instale o Insomnia e crie um workspace e faça o import do arquivo insomia.json é só clicar no nome do worspace e vai listar esta opção
 - https://support.insomnia.rest/article/23-installation
