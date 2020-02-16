@@ -12,7 +12,7 @@ routes.post('/', upload.single('file'), (req, res) => {
   return res.status(200).json({ upload: 'Success' });
 });
 
-routes.get('/', GameController.index());
+routes.get('/infos', GameController.index());
 
 routes.get('/infos/:id', GameController.show());
 
