@@ -9,7 +9,7 @@ const upload = multer({ storage });
 const routes = new Router();
 
 routes.post('/', upload.single('file'), (req, res) => {
-  res.send('ok');
+  return res.status(200).json({ upload: 'Success' });
 });
 
 routes.get('/', GameController.index());

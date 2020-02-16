@@ -43,12 +43,12 @@ class Parser {
     for (i = 0; i < lastLine; i++) {
       command = lines[i].match(values.get_comand);
       if (command) {
-        this.checkCommand(command[1], lines[i], i);
+        this.allComands(command[1], lines[i], i);
       }
     }
   }
 
-  checkCommand(command, line, idx) {
+  allComands(command, line, idx) {
     switch (command) {
       case 'InitGame':
         Game.new(this, line);
@@ -63,7 +63,6 @@ class Parser {
         Player.kill(this, line);
         break;
       default:
-        // console.log(`[INFO] Command ${command} ignored (line: ${idx})`)
         break;
     }
   }

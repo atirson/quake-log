@@ -3,6 +3,8 @@ import Parser from '../app/models/Parser';
 
 const parser = new Parser();
 
+const path = `${__dirname}/../uploads/`;
+
 function readAllFiles(dirname, onFileContent, onError) {
   fs.readdir(dirname, function(err, filenames) {
     if (err) {
@@ -16,10 +18,6 @@ function readAllFiles(dirname, onFileContent, onError) {
           return;
         }
         onFileContent(filename, content);
-        fs.watch(`${__dirname}/../uploads/`, (eventType, filename) => {
-          console.log(eventType);
-          console.log(filename);
-        });
         parser.readFile(dirname+filename);
       });
     });
@@ -27,10 +25,12 @@ function readAllFiles(dirname, onFileContent, onError) {
 }
 
 var data = {};
-readAllFiles(`${__dirname}/../uploads/`, function(filename, content) {
-  data[filename] = content;
-}, function(err) {
-  throw err;
+fs.watch(path, () => {
+  readAllFiles(path, function(filename, content) {
+    data[filename] = content;
+  }, function(err) {
+    throw err;
+  });
 });
 
 export default parser;
